@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,58 +11,60 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Aqui vagas pra vocês profissionais',),
-        centerTitle: true,
-        titleSpacing: 50.0,
-        leading: Text('Vagas Pets',style: TextStyle(fontSize: 20),),
-      ),
-      body: Stack(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Column(
+      
+      body:  NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              leading: Image.asset("images/logo.png"),
+              expandedHeight: 200.0,
+              floating: false,
+              pinned: true,
+              backgroundColor: Colors.green,
+              flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  
+                  
+                  background: Image.network(
+                    "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    fit: BoxFit.cover,
+                  ),
+                  
+                  ),actions: <Widget>[
+FlatButton(
+            child: Text("Menu",style: TextStyle(
+              fontSize: 25
 
-            children: <Widget>[
-              Container(width: MediaQuery.of(context).size.width/4.0,
-              height: MediaQuery.of(context).size.height/1.1,
-              color: Colors.grey,
-              )
-            ],
-          ),
-            Container(
-              padding: EdgeInsets.all(50),
-              width:  MediaQuery.of(context).size.width/1.5,
-              child: ListView(
-              children: <Widget>[
-                Container(
-                  color: Colors.yellowAccent,
-                  width: 50,
-                  height: 50,
-                ),
-                Container(
-                  color: Colors.yellowAccent,
-                  width: 50,
-                  height: 50,
-                ),
-                
-                Container(
-                  color: Colors.yellowAccent,
-                  width: 50,
-                  height: 50,
-                ),
-                Container(
-                  color: Colors.yellowAccent,
-                  width: 50,
-                  height: 50,
-                )
-              ],
-            ),
-            )
+            ),),
+            onPressed: (){},
+            disabledColor: Colors.grey,
+            color: Colors.red,
             
-            ],
+          ),
+           FlatButton(
+             
+            child: Text("Sobre",style: TextStyle(
+              fontSize: 25)),
+            onPressed: (){},
+          ),
+           new FlatButton(
+  child: new Text("Contato",style: TextStyle(
+              fontSize: 25)),
+  onPressed: (){},
+  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0))
+),
+           FlatButton(
+            child: Text("Anuncios",style: TextStyle(
+              fontSize: 25)),
+            onPressed: (){},
           )
-        ],
+                  ],
+            ),
+          ];
+        },
+        body: Center(
+          child: Text("Sample Text"),
+        ),
       ),
     );
   }
