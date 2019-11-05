@@ -8,64 +8,72 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      body:  NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar(
-              leading: Image.asset("images/logo.png"),
-              expandedHeight: 200.0,
-              floating: false,
-              pinned: true,
-              backgroundColor: Colors.green,
-              flexibleSpace: FlexibleSpaceBar(
-                  centerTitle: true,
-                  
-                  
-                  background: Image.network(
-                    "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
-                    fit: BoxFit.cover,
-                  ),
-                  
-                  ),actions: <Widget>[
-FlatButton(
-            child: Text("Menu",style: TextStyle(
-              fontSize: 25
+      appBar: AppBar(
 
-            ),),
-            onPressed: (){},
-            disabledColor: Colors.grey,
-            color: Colors.red,
-            
-          ),
-           FlatButton(
-             
-            child: Text("Sobre",style: TextStyle(
-              fontSize: 25)),
-            onPressed: (){},
-          ),
-           new FlatButton(
-  child: new Text("Contato",style: TextStyle(
-              fontSize: 25)),
-  onPressed: (){},
-  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0))
-),
-           FlatButton(
-            child: Text("Anuncios",style: TextStyle(
-              fontSize: 25)),
-            onPressed: (){},
-          )
-                  ],
-            ),
-          ];
-        },
-        body: Center(
-          child: Text("Sample Text"),
-        ),
       ),
-    );
+      drawer: Drawer(
+  child: ListView(
+    children: <Widget>[
+      ListTile(
+        title: Text("Item: "),
+        trailing: Icon(Icons.arrow_forward),
+      ),
+      ListTile(
+        title: Text("Item 2"),
+        trailing: Icon(Icons.arrow_forward),
+      ),
+    ],
+  ),
+),
+body: Stack(
+  children: <Widget>[
+    Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            
+            new Container(
+              width: MediaQuery.of(context).size.width/1.2,
+  height: MediaQuery.of(context).size.height/1.2,
+  child: new ListView(
+    scrollDirection: Axis.vertical,
+    children: <Widget>[
+      new RaisedButton(
+        onPressed: null,
+        child: new Text("vaga1"),
+      ),
+      new Padding(padding: new EdgeInsets.all(5.00)),
+      new RaisedButton(
+        onPressed: null,
+        child: new Text("vaga2"),
+      ),
+      Container(
+       child: Column(
+         children: <Widget>[
+           Text("teste")
+           ,Text("teste")
+
+         ],
+       ),
+        
+      )
+    ],
+  ),
+),
+
+ 
+          ],
+        )
+      ],
+    )]
+),
+);
   }
-}
+  
+  }
